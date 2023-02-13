@@ -1,0 +1,113 @@
+{% load bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Top Air</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/topair.css' %}">
+    <link rel="stylesheet" type="text/scss" href="{% static 'scss/topair.scss' %}">
+    <script src="{% static 'js/custom_scrollbar.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href='' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <style>
+
+      .carousel-item{
+          min-height: 280px;
+       }
+     </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+    <!-- Bootstrap CSS -->
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-r/w/r+Zr0g/"></script>
+
+<script>
+$(document).ready(function(){
+  $(".nav-link").click(function(){
+    $(".nav-link").removeClass("active bigger-font smaller-font");
+    if($(this).attr('id') == 'home-nav') {
+        $(this).addClass("active smaller-font");
+    } else {
+        $(this).addClass("active bigger-font");
+    }
+  });
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+  var currentPage = window.location.pathname; // get current page's path
+  $(".nav-link").each(function() {
+    if ($(this).attr("href") == currentPage) {
+      $(this).addClass("active bigger-font"); // add "active" and "bigger-font" class to the current page's link
+    }
+  });
+  $(".nav-link").click(function(){
+    $(".nav-link").removeClass("active bigger-font"); // remove "active" and "bigger-font" class from all buttons
+    $(this).addClass("active bigger-font"); // add "active" and "bigger-font" class to the clicked button
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-Zygm0Q2/9cN/tLlPtA/Ffn/gA5h7FGhNvJ1g7+x/B6n/7V1cwlY+gc7VmAKo/8w" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <nav class="navbar navbar-expand-lg navbar-light col-sm-7 transparent-nav" style="margin: 50px 80px;">
+    <a class="navbar-brand text-white">Top Air</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white smaller-font active" href="{% url 'aviation_school:home' %}" id="home-nav">Home</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white active" href="{% url 'aviation_school:become_a_pilot' %}" id="become-pilot-nav">
+                    Become a Pilot
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white active" href="{% url 'aviation_school:sightseeing_tour' %}">Sightseeing Tour</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white active" href="{% url 'aviation_school:our_aircraft' %}">Our aircrafts</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white active" href="{% url 'aviation_school:book_flight' %}">Book a Flight!</a>
+            </li>
+    </ul>
+  </nav>
+    <div id="content">
+        {% block title %}{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
+</body>

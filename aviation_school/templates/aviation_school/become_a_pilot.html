@@ -1,0 +1,887 @@
+{% extends "aviation_school/base.html" %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+.alert {
+  margin-bottom: 60px;
+  font-family: 'Rajdhani';
+}
+</style>
+
+<div class="alert alert-info alert-dismissible fade show w-50 p-3 position-absolute top-10 start-50 translate-middle" role="alert">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg>
+  <strong>Click </strong>on the different licences to see more information about them
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="vr"></div>
+</div>
+<script>
+    function parallaxEffect(element) {
+        element.style.transition = "transform 0.7s";
+        element.style.transform = "scale(1.1)";
+        let modalButton = element.querySelector('.modal-button');
+        modalButton.style.transition = "opacity 0.7s";
+        modalButton.style.opacity = "0.5";
+    }
+    function normalEffect(element) {
+        element.style.transition = "transform 0.7s";
+        element.style.transform = "scale(1)";
+        let modalButton = element.querySelector('.modal-button');
+        modalButton.style.transition = "opacity 0.7s";
+        modalButton.style.opacity = "1";
+    }
+</script>
+
+
+<!-- Button trigger modal -->
+<div class="modal-button-container" onmouseover="parallaxEffect(this)" onmouseout="normalEffect(this)">
+  <img class="modal-button" src="{% static 'images/GPL.jpg' %}" data-bs-toggle="modal" data-bs-target="#modal5" alt="Launch demo modal">
+  <div class="title2" data-bs-toggle="modal" data-bs-target="#modal5">GPL</div>
+  <div class="text-licence" data-bs-toggle="modal" data-bs-target="#modal5">Glider Pilot License </div>
+</div>
+
+<div class="d-flex" style="height: 50px;">
+  <div class="vr"></div>
+</div>
+
+<div class="modal-button-container" onmouseover="parallaxEffect(this)" onmouseout="normalEffect(this)">
+  <img class="modal-button" src="{% static 'images/aircrafts.jpg' %}" data-bs-toggle="modal" data-bs-target="#modal1" alt="Launch demo modal">
+  <div class="title2" data-bs-toggle="modal" data-bs-target="#modal1">PPL</div>
+  <div class="text-licence" data-bs-toggle="modal" data-bs-target="#modal1">Private Pilot License </div>
+</div>
+
+<div class="d-flex" style="height: 50px;">
+  <div class="vr"></div>
+</div>
+
+
+<div class="modal-button-container" onmouseover="parallaxEffect(this)" onmouseout="normalEffect(this)">
+  <img class="modal-button" src="{% static 'images/CPL.jpg' %}" data-bs-toggle="modal" data-bs-target="#modal2" alt="Launch demo modal">
+  <div class="title2" data-bs-toggle="modal" data-bs-target="#modal2">CPL</div>
+  <div class="text-licence" data-bs-toggle="modal" data-bs-target="#modal2">Commercial Pilot License </div>
+</div>
+
+<div class="d-flex" style="height: 50px;">
+  <div class="vr"></div>
+</div>
+
+<div class="modal-button-container" onmouseover="parallaxEffect(this)" onmouseout="normalEffect(this)">
+  <img class="modal-button" src="{% static 'images/HPPL.jpg' %}" data-bs-toggle="modal" data-bs-target="#modal3" alt="Launch demo modal">
+  <div class="title2" data-bs-toggle="modal" data-bs-target="#modal3">PPLH</div>
+  <div class="text-licence" data-bs-toggle="modal" data-bs-target="#modal3">Private Helicopter Pilot License </div>
+</div>
+
+<div class="d-flex" style="height: 50px;">
+  <div class="vr"></div>
+</div>
+
+<div class="modal-button-container" onmouseover="parallaxEffect(this)" onmouseout="normalEffect(this)">
+  <img class="modal-button" src="{% static 'images/HCPL.jpg' %}" data-bs-toggle="modal" data-bs-target="#modal4" alt="Launch demo modal">
+  <div class="title2" data-bs-toggle="modal" data-bs-target="#modal4">CPLH</div>
+  <div class="text-licence" data-bs-toggle="modal" data-bs-target="#modal4">Commercial Helicopter Pilot License </div>
+</div>
+
+<style>
+    .modal-button-container {
+        width: 80vw;
+        height: 30vh;
+        border-radius: 90px;
+        display: block;
+        margin: 0 auto;
+        border: 5px solid white;
+    }
+
+    .modal-button {
+        width: 100%;
+        height: 100%;
+        border-radius: 85px;
+    }
+    .title2 {
+        position: relative;
+        top: -40%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        text-align: center;
+        font-size: 85px;
+        color: white;
+        font-family: 'Montserrat Alternates Medium'
+}
+    .text-licence {
+        position: relative;
+        top: -53%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        text-align: center;
+        font-size: 40px;
+        color: white;
+        font-family: 'Montserrat Alternates Medium';
+        margin-bottom: 20px;
+}
+
+</style>
+<script>
+  let modalButton = document.querySelector('.modal-button');
+  let border = document.querySelector('.border-image');
+
+  modalButton.addEventListener('mouseover', function() {
+    modalButton.style.opacity = "0.5";
+    border.style.opacity = "1";
+  });
+
+  modalButton.addEventListener('mouseout', function() {
+    modalButton.style.opacity = "1";
+    border.style.opacity = "1";
+  });
+
+  modalButton.style.transition = "opacity .5s ease-in-out";
+</script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="position-absolute top-7 start-50 translate-middle-x">
+        <h1 class="modal-title fs-5 text-black" id="exampleModalLabel" style="font-family: 'Rajdhani';"><strong>
+            Private Pilot License</strong></h1>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+        The private license is usually obtained in 3 to 6 months and allows the pilot to bring passengers.
+        Compensation for flying is not permitted. However, you are allowed to share the costs with passengers.
+        You can also fly abroad according to the regulations in force. You can add the qualifications of night flight,
+        over-the-top, multi-engine and instrument flight.
+        <br><br>
+        <div class="prerequisites">
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul>
+            <li>
+                17 years old
+            </li>
+            <li>
+                Valid medical certificate of category 1 or 3
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul>
+            <li>
+                Theoretical ground course 40 hrs
+            </li>
+            <li>
+                Preparatory instructions & presentation 15 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul>
+            <li>
+                Practice flights in dual control flight 36 hours
+            </li>
+            <li>
+                Solo practice flights 13.5 hours
+            </li>
+            </ul>
+        </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="d-flex" style="height: 90px;">
+  <div class="vr"></div>
+</div>
+
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="secondModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+         <div class="position-absolute top-7 start-50 translate-middle-x">
+         <h1 class="modal-title fs-5 text-black" id="exampleModalLabel" style="font-family: 'Rajdhani';">
+             <strong>Commercial Pilot License</strong></h1>
+         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+        The process to obtain a commercial pilot license starts with obtaining a private pilot license.
+          If the candidate already holds a license from another ICAO member country, they can convert it within
+          a period of around one month. Hours flown in Canada or other countries can be included in the calculation
+          of the personalized training quote, as long as they are certified and meet the requirements
+          set by Transport Canada.
+        <br><br>
+        This license allows for the addition of various qualifications, such as instrument flight, multi-engine,
+          night flight, and others. These qualifications are essential for obtaining a job as a professional pilot.
+          While the night flight qualification is usually included in professional flight training quotes, it may not be
+          specifically mentioned.
+        <br><br>
+        <div class="prerequisites">
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul>
+            <li>
+                18 years old
+            </li>
+            <li>
+                Valid medical certificate of category 1
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul>
+            <li>
+                Theoretical ground course 120 hrs
+            </li>
+            <li>
+                Preparatory instructions & presentation 30 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul>
+            <li>
+                Practice flights in dual control flight 76 hours
+            </li>
+            <li>
+                Solo practice flights 127 hours
+            </li>
+            </ul>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal5" tabindex="-1" aria-labelledby="fifthModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+         <div class="position-absolute top-7 start-50 translate-middle-x">
+         <h1 class="modal-title fs-5 text-black" id="exampleModalLabel" style="font-family: 'Rajdhani';">
+             <strong>Glider Pilot License</strong></h1>
+         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+        Within the 12 months preceding the date of application for the licence, an applicant shall demonstrate
+          in flight and on the ground familiarity with, and the ability to perform both normal and emergency manoeuvres
+          appropriate to the glider used in the test and with a degree of competency appropriate to the holder of
+          a pilot licence - glider.
+        <br><br>
+        An applicant who holds a pilot permit or licence in any other category of aircraft, except ultra-light aeroplanes,
+          shall be deemed to have met 10 of the 15 hours ground school instruction requirement.An applicant who holds a
+          pilot licence - aeroplane category shall have the total glider pilot flight training time reduced to a minimum
+          of 3 hours, which shall include the minimum flight training specified.
+        <br><br>
+        <div class="prerequisites">
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul>
+            <li>
+                16 years old
+            </li>
+            <li>
+                Valid medical certificate of category 1,3 or 4
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul>
+            <li>
+                Theoretical ground course 15 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul>
+            <li>
+                minimum of 6 hours of glider pilot flight training
+            </li>
+            <li>
+                Practice flights in dual control flight minimum 1 hours
+            </li>
+            <li>
+                Solo practice flights minimum 2 hours
+            </li>
+            </ul>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="ThirthModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+         <div class="position-absolute top-7 start-50 translate-middle-x">
+         <h1 class="modal-title fs-5 text-black" id="exampleModalLabel" style="font-family: 'Rajdhani';">
+             <strong>Private Helicopter Pilot License</strong></h1>
+         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+        Private pilot training allows you to become a Pilot in a personal setting, for your leisure or business trips.
+        You will have the opportunity to pilot all types of helicopters, with passengers, and thus share your passion
+          with your family and those around you.
+        <br><br>
+         Your lessons are individual and planned at the time of your choice, according to your availability.
+        After obtaining your License, you will be able to rent Top Air helicopters at preferential rates.
+        Because mastery comes from having fun, our instructors will remain available at all times to ensure your
+          continuing education.
+        <br><br>
+        <div class="prerequisites">
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul>
+            <li>
+                17 years old
+            </li>
+            <li>
+                Valid medical certificate of category 1 or 3
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul>
+            <li>
+                Theoretical ground course 40 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul>
+            <li>
+                A total of 45 hours of flight
+            </li>
+            </ul>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="FourthModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+         <div class="position-absolute top-7 start-50 translate-middle-x">
+         <h1 class="modal-title fs-5 text-black" id="exampleModalLabel" style="font-family: 'Rajdhani';">
+             <strong>Commercial Helicopter Pilot License</strong></h1>
+         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+        Private pilot training allows you to become a Pilot in a personal setting, for your leisure or business trips.
+        You will have the opportunity to pilot all types of helicopters, with passengers, and thus share your passion
+          with your family and those around you.
+        <br><br>
+         Your lessons are individual and planned at the time of your choice, according to your availability.
+        After obtaining your License, you will be able to rent Top Air helicopters at preferential rates.
+        Because mastery comes from having fun, our instructors will remain available at all times to ensure your
+          continuing education.
+        <br><br>
+        <div class="prerequisites">
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul>
+            <li>
+                18 years old
+            </li>
+            <li>
+                Valid medical certificate of category 1
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul>
+            <li>
+                Theoretical ground course 80 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul>
+            <li>
+                A total of 100 hours of flight
+            </li>
+            <li>
+                minimum 55 hrs flight in dual command
+            </li>
+            <li>
+                minimum 35 hrs flight in solo
+            </li>
+            </ul>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="d-flex" style="height: 90px;">
+  <div class="vr"></div>
+</div>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500&display=swap');
+
+#customers-testimonials .item {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 15px;
+    opacity: .2;
+    -webkit-transform: scale3d(0.8, 0.8, 1);
+    transform: scale3d(0.8, 0.8, 1);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #FFF;
+    border-radius: 50px;
+}
+#customers-testimonials .owl-item.active.center .item {
+    opacity: 1;
+    -webkit-transform: scale3d(1.0, 1.0, 1);
+    transform: scale3d(1.0, 1.0, 1);
+    background-color: #FFF;
+}
+.owl-carousel .owl-item img {
+    transform-style: preserve-3d;
+    max-width: 420px;
+    margin: 0 auto 17px;
+    border-radius: 30px;
+}
+#customers-testimonials.owl-carousel .owl-dots .owl-dot.active span, #customers-testimonials.owl-carousel .owl-dots .owl-dot:hover span {
+    background: #fff;
+    transform: translate3d(0px, -50%, 0px) scale(0.6);
+}
+#customers-testimonials.owl-carousel .owl-dots {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+#customers-testimonials.owl-carousel .owl-dots .owl-dot {
+    display: inline-block;
+    outline: none;
+}
+#customers-testimonials.owl-carousel .owl-dots .owl-dot span {
+    background: rgba(255,255,255,0.4);
+    display: inline-block;
+    height: 20px;
+    margin: 0 2px 5px;
+    transform: translate3d(0px, -50%, 0px) scale(0.3);
+    transform-origin: 50% 50% 0;
+    transition: all 250ms ease-out 0s;
+    width: 20px;
+    border-radius: 100%;
+}
+
+</style>
+
+<!-- TESTIMONIALS -->
+
+<div class="container">
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="container-fluid px-3 px-sm-5 my-5 text-center">
+        <h1 class="text-white" style="font-size: 70px; font-family: 'Montserrat Alternates Medium';">Ratings</h1>
+      </div>
+        <div id="customers-testimonials" class="owl-carousel">
+
+        <!--TESTIMONIAL 1 -->
+        <div class="item shadow-lg text-black" style="font-family: 'Rajdhani';">
+            <div class="">
+                <strong>Multi-Engine</strong>
+            </div>
+            <div class="p-4 bg-white rounded"> <img src="{% static 'images/multi-engine.jpg' %}" alt=""></div>
+           <p>The multi-engine qualification allows you to acquire the knowledge necessary to fly in an aircraft with
+               more than one engine. This qualification remains very popular because it makes it possible to fly
+               and more efficient aircraft.
+               <br><br>
+               <div class="prerequisites" >
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Private or Commercial Pilot License
+            </li>
+            <li>
+                Appropriate medical certificate
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Preparatory instruction course 5 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Practice flights in dual control flight 10 hrs
+            </li>
+            <li>
+                Flight test with TC: 1hr
+            </li>
+            </ul>
+        </ul>
+        </div>
+           </p>
+
+          </div>
+        <!--END OF TESTIMONIAL 1 -->
+        <!--TESTIMONIAL 2 -->
+        <div class="item shadow-lg text-black" style="font-family: 'Rajdhani';">
+            <div class="">
+                <strong>Instrument Flight On Single-Engine (group 3)</strong>
+            </div>
+            <div class="p-4 bg-white rounded"> <img src="{% static 'images/instrument.jpg' %}" alt=""></div>
+           <p>The instrument flight rating equips the pilot with the ability to operate the aircraft in adverse weather
+               conditions. It is a crucial requirement for those pursuing a career as a professional airline pilot.
+               The training for this rating typically lasts for a minimum of 2 months.
+               <br><br>
+               <div class="prerequisites" >
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Private or Commercial Pilot License
+            </li>
+            <li>
+                50 hours of flight as Pilot in Command
+            </li>
+            <li>
+                Valid medical certificate of category 1 or 3
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Ground theory lessons (optional) 20 hrs
+            </li>
+            <li>
+                Preparatory instruction course 10 hrs
+            </li>
+            <li>
+                Simulator 10 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Dual control flight (professional): 15 hrs
+            </li>
+            <li>
+                Dual control flight (private): 35 hrs
+            </li>
+            <li>
+                Flight test with TC: 1.5 hr
+            </li>
+            </ul>
+        </ul>
+        </div>
+           </p>
+
+          </div>
+        <!--END OF TESTIMONIAL 2 -->
+        <!--TESTIMONIAL 3 -->
+        <div class="item shadow-lg text-black" style="font-family: 'Rajdhani';">
+            <div class="">
+                <strong>Multi-Engine Instrument Flight (group 1)</strong>
+            </div>
+            <div class="p-4 bg-white rounded"> <img src="{% static 'images/multi-engine2.jpg' %}" alt=""></div>
+           <p>This qualification offers the pilot of private or professional aircraft all possibilities in terms of
+               learning and experience. It allows the pilot to perform flights at all times on larger aircraft.
+In the          case of a multi-engine instrument flight rating, you must first have your multi-engine rating.
+               <br><br>
+               <div class="prerequisites" >
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                18 years old
+            </li>
+            <li>
+                Private or Commercial Pilot License 50 hrs of flight as PIC
+            </li>
+            <li>
+                Valid medical certificate of category 1 or 3
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Ground theory lessons (optional) 20 hrs
+            </li>
+            <li>
+                Preparatory instructions and presentation 10 hrs
+            </li>
+            <li>
+               Flight simulator 5 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                dual control flight 15 hrs
+            </li>
+            <li>
+                dual control flight (Private) 35 hrs
+            </li>
+            <li>
+                Flight test with TC: 1.5 h
+            </li>
+            </ul>
+        </ul>
+        </div>
+           </p>
+
+          </div>
+        <!--END OF TESTIMONIAL 3 -->
+        <!--TESTIMONIAL 4 -->
+<div class="item shadow-lg text-black" style="font-family: 'Rajdhani';">
+            <div class="">
+                <strong>Night Flight</strong>
+            </div>
+            <div class="p-4 bg-white rounded"> <img src="{% static 'images/night.jpg' %}" alt=""></div>
+           <p>The night flight qualification is ideal for pilots who aim to increase their flight hours during winter,
+               as reduced daylight hours can have an impact on their flight time. This qualification is part of the
+               comprehensive commercial pilot license training
+               <br><br>
+               <div class="prerequisites" >
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Private or Commercial Pilots License
+            </li>
+            <li>
+                Valid medical certificate of category 1 or 3
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Preparatory instruction course 2 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Night flights in dual control 5 hrs
+            </li>
+            <li>
+                Solo night flights
+            </li>
+            <li>
+                Instrument flights 11 hrs
+            </li>
+            </ul>
+        </ul>
+        </div>
+           </p>
+
+          </div>
+        <!--END OF TESTIMONIAL 4 -->
+
+        <!--TESTIMONIAL 5 -->
+<div class="item shadow-lg text-black" style="font-family: 'Rajdhani';">
+            <div class="">
+                <strong>Fight Instructor</strong>
+            </div>
+            <div class="p-4 bg-white rounded"> <img src="{% static 'images/instructor-flight.jpg' %}" alt=""></div>
+           <p>This qualification makes it possible to become an instructor for the training of aspiring pilots in a
+               flight school holding a Transport Canada operating certificate. You will also have the opportunity to
+               amass more hours of flight, while remaining in the field of piloting. What could be better to perfect
+               your piloting techniques than to teach them?
+               <br><br>
+               <div class="prerequisites" >
+        <ul>
+           <strong>Prerequisites</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Commercial Pilots License
+            </li>
+            <li>
+                Valid Category 1 medical certificate
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="ground_training">
+        <ul>
+           <strong>Ground Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Ground theory lessons and preparatory instructions 40 hrs
+            </li>
+            <li>
+                Manuals & materials
+            </li>
+            </ul>
+        </ul>
+        </div>
+        <div class="flight_training">
+        <ul>
+           <strong>Flight Training</strong>
+            <ul style="font-size: 15px;">
+            <li>
+                Practice flights in dual control flight 30 hrs
+            </li>
+            <li>
+                Flight test with Transport Canada 1.5 h
+            </li>
+            </ul>
+        </ul>
+        </div>
+           </p>
+
+          </div>
+        <!--END OF TESTIMONIAL 5 -->
+
+      </div>
+      </div>
+  </div>
+  </div>
+
+<!-- END OF TESTIMONIALS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+  jQuery(document).ready(function($) {
+                "use strict";
+                //  TESTIMONIALS CAROUSEL HOOK
+                $('#customers-testimonials').owlCarousel({
+                    loop: true,
+                    center: true,
+                    margin:-38,
+                    dots:true,
+                    autoplayTimeout: 5000,
+                    smartSpeed: 450,
+                    responsive: {
+                      0: {
+                        items: 1
+                      },
+                      768: {
+                        items: 2
+                      },
+                      1170: {
+                        items: 3
+                      }
+                    }
+                });
+            });
+  </script>
+
+{% endblock %}

@@ -1,0 +1,500 @@
+{% extends "aviation_school/base.html" %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<style>* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    -o-display: flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.container .pricing__table {
+    display: block;
+    padding: 20px;
+    background: #ccc;
+    overflow: hidden;
+    width: 300px;
+    margin: 10px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.container .pricing__table:nth-child(1) {
+    background-image: linear-gradient(135deg, #FCCF31 10%, #F55555 100%);
+}
+
+
+
+.container .pricing__table:nth-child(2) {
+    background-image: linear-gradient(135deg, #71EB82 10%, #1593E7 100%);
+}
+
+.container .pricing__table:nth-child(3) {
+    background-image: linear-gradient(135deg, #F761A1 10%, #8C1BAB 100%);
+}
+
+.container .pricing__table:nth-child(4) {
+    background-image: linear-gradient(135deg, #43CBFF 10%, #9708CC 100%);
+}
+
+.container .pricing__table:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    z-index: 100;
+}
+
+.pricing__table .icon {
+    display: block;
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    text-align: center;
+    line-height: 70px;
+    font-size: 2.2em;
+    margin: 20px auto;
+    border-radius: 50px;
+    -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.pricing__table .icon span {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -ms-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.pricing__table .type-01 {
+    color: #FCCF31;
+}
+
+.pricing__table .type-02 {
+    color: #71EB82;
+}
+
+.pricing__table .type-03 {
+    color: #F761A1;
+}
+
+
+.pricing__table .type-04 {
+    color: #43CBFF;
+}
+
+.heading {
+    color: #fff;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: lighter;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+.service__price {
+    color: #fff;
+    text-align: center;
+    font-size: 3em;
+}
+
+.service__price .dollar__sign {
+    font-size: 0.6em;
+    margin-left: -10px;
+}
+
+.features__list {
+    list-style: none;
+    display: block;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.features__list li {
+    color: #fff;
+    text-align: center;
+    display: block;
+    text-transform: capitalize;
+    font-weight: lighter;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.order__button {
+    border: none;
+    display: block;
+    width: 70%;
+    height: 40px;
+    margin: 5px auto;
+    border-radius: 50px;
+    -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    font-family: "Roboto", sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    background: #fff;
+    cursor: pointer;
+}
+
+.order__button:focus {
+    outline: none;
+}
+
+
+.btn.btn-light {
+    font-family: 'Rajdhani';
+    display: block;
+    margin: 0 auto;
+    border-color: white;
+    border-width: 2px;
+    text-align: center;
+    font-size: 13px;
+  }
+
+
+</style>
+
+ <script type='text/javascript' src=''></script>
+ <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+ <script type='text/javascript' src=''></script>
+
+<div class="container">
+    <div class="pricing__table">
+        <div class="icon type-01">
+            <span aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-buildings-fill" viewBox="0 0 16 19">
+                  <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V.5ZM2 11h1v1H2v-1Zm2 0h1v1H4v-1Zm-1 2v1H2v-1h1Zm1 0h1v1H4v-1Zm9-10v1h-1V3h1ZM8 5h1v1H8V5Zm1 2v1H8V7h1ZM8 9h1v1H8V9Zm2 0h1v1h-1V9Zm-1 2v1H8v-1h1Zm1 0h1v1h-1v-1Zm3-2v1h-1V9h1Zm-1 2h1v1h-1v-1Zm-2-4h1v1h-1V7Zm3 0v1h-1V7h1Zm-2-2v1h-1V5h1Zm1 0h1v1h-1V5Z"/>
+                </svg>
+            </span>
+        </div>
+        <h3 class="heading" style="font-family: 'Montserrat Alternates Medium';">City Tour</h3>
+        <h1 class="service__price">
+            400
+            <sup class="dollar__sign">$</sup>
+        </h1>
+        <ul class="features__list" style="font-family: 'Rajdhani';">
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                3 people max.
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                1 hour flight
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                Above Montreal
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                Incredible View
+            </li>
+        </ul>
+
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal1" style="background-color: transparent; color: white;">
+  Learn More ...
+</button>
+
+        <br><br>
+        <button class="order__button" style="font-family: 'Montserrat Alternates Medium';"
+        onclick="location.href='{% url 'aviation_school:book_flight' %}?message=Book%20a%20flight%20with%20CIty%20Tour%20flight%20plan.'">
+    Book a Flight
+</button>
+    </div>
+
+    <div class="pricing__table">
+        <div class="icon type-02">
+            <span aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-tree-fill" viewBox="0 0 16 19">
+                  <path d="M8.416.223a.5.5 0 0 0-.832 0l-3 4.5A.5.5 0 0 0 5 5.5h.098L3.076 8.735A.5.5 0 0 0 3.5 9.5h.191l-1.638 3.276a.5.5 0 0 0 .447.724H7V16h2v-2.5h4.5a.5.5 0 0 0 .447-.724L12.31 9.5h.191a.5.5 0 0 0 .424-.765L10.902 5.5H11a.5.5 0 0 0 .416-.777l-3-4.5z"/>
+                </svg>
+            </span>
+        </div>
+        <h3 class="heading" style="font-family: 'Montserrat Alternates Medium';">Valley Tour</h3>
+        <h1 class="service__price">
+            400
+            <sup class="dollar__sign">$</sup>
+        </h1>
+        <ul class="features__list" style="font-family: 'Rajdhani';">
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                1 hours flight
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                3 people max
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                Above landscapes
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Above the valley
+            </li>
+        </ul>
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal2" style="background-color: transparent; color: white;">
+          Learn More ...
+        </button>
+        <br><br>
+        <button class="order__button" style="font-family: 'Montserrat Alternates Medium';"
+        onclick="location.href='{% url 'aviation_school:book_flight' %}?message=Book%20a%20flight%20with%20Valley%20Tour%20flight%20plan.'">
+    Book a Flight
+</button>
+    </div>
+
+    <div class="pricing__table">
+        <div class="icon type-03">
+            <span class="fa fa-plane" aria-hidden="true">
+            </span>
+        </div>
+        <h3 class="heading" style="font-family: 'Montserrat Alternates Medium';">Pilot for 1 day</h3>
+        <h1 class="service__price">
+            500
+            <sup class="dollar__sign">$</sup>
+        </h1>
+        <ul class="features__list" style="font-family: 'Rajdhani';">
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                2 hours flight
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                15 minutes briefing
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                Take the controls
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Learn to fly
+            </li>
+        </ul>
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal3" style="background-color: transparent; color: white;">
+          Learn More ...
+        </button>
+        <br><br>
+        <button class="order__button" style="font-family: 'Montserrat Alternates Medium';"
+        onclick="location.href='{% url 'aviation_school:book_flight' %}?message=Booking%20a%20flight%20with%20pilot%20for%20one%20day%20plan.'">
+    Book a Flight
+</button>
+    </div>
+
+    <div class="pricing__table">
+        <div class="icon type-04">
+            <span aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-airplane-engines-fill" viewBox="0 0 16 19">
+                    <path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.347 4.347 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0Z"/>
+                </svg>
+            </span>
+        </div>
+        <h3 class="heading" style="font-family: 'Montserrat Alternates Medium';">Aerobatic Tour</h3>
+        <h1 class="service__price">
+            700
+            <sup class="dollar__sign">$</sup>
+        </h1>
+        <ul class="features__list" style="font-family: 'Rajdhani';">
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                Aerobatic flight
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                Thrilling experience
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true">
+                </i>
+                Aerial acrobatics
+            </li>
+            <li>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Stunt flying
+            </li>
+        </ul>
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal4" style="background-color: transparent; color: white;">
+          Learn More ...
+        </button>
+        <br><br>
+        <button class="order__button" style="font-family: 'Montserrat Alternates Medium';"
+        onclick="location.href='{% url 'aviation_school:book_flight' %}?message=Book%20a%20flight%20with%20aerobatic%20flight%20plan.'">
+    Book a Flight
+</button>
+    </div>
+
+</div>
+<script type='text/javascript'></script>
+
+<!-- Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+        <h1 class="modal-title fs-5 text-black" id="oneModalLabel" style="font-family: 'Rajdhani';">
+             <strong>City Tour</strong></h1>
+         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+        People from here or elsewhere, Top Air offers you an overview of Montreal.
+          A breathtaking flight awaits you at an altitude of some 3,000 feet.
+          You will observe the different municipalities of the region as well as the Mont Royal and its magnificent landscape.
+* Maximum of three people per flight.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+        <h1 class="modal-title fs-5 text-black" id=twoModalLabel" style="font-family: 'Rajdhani';">
+             <strong>Valley Tour</strong></h1>
+         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+      Explore the beauty of nature from a new perspective with a flight tour over breathtaking landscapes. Soar
+          through the sky and admire panoramic views of towering mountains, rolling hills, and sparkling lakes.
+          Get up close and personal with towering waterfalls and watch as they cascade down the mountainside.
+          Take in the endless stretch of rolling green fields dotted with quaint towns and villages.
+          <br><br>
+          Fly over
+          vibrant forests, dotted with colorful leaves and teeming with wildlife. Experience the wonder of flight
+          and marvel at the beauty of the natural world with a flight tour over some of the world's most awe-inspiring
+          landscapes.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+        <h1 class="modal-title fs-5 text-black" id="threeModalLabel" style="font-family: 'Rajdhani';">
+             <strong>Pilot For 1 Day</strong></h1>
+         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+        From takeoff to landing, take control of the aircraft yourself accompanied by an experienced instructor.
+          In a safe way, you can experience basic and advanced maneuvers to meet your expectations.
+          <br><br>
+          This first introductory flight can be credited to you if the passion leads you to start your training with us.
+          After approximately 2 hours of flight, you will receive
+          your certificate of participation. Take to the skies and discover the region seen from the sky!
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+        <h1 class="modal-title fs-5 text-black" id="fourModalLabel" style="font-family: 'Rajdhani';">
+             <strong>Aerobatic Flight</strong></h1>
+         </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black" style="font-family: 'Rajdhani';">
+      Get ready for an adrenaline-fueled experience like no other! Take to the skies with our aerobatic tour,
+          where you'll experience breathtaking stunts, loops and rolls like never before. Our expert pilots have
+          years of experience in aerobatics, ensuring a safe and thrilling experience.
+          <br><br>
+          Soar through the clouds and witness stunning views as you perform aerobatic manuevers, reaching heights
+          you never thought possible. You'll feel the g-forces as you experience high-speed loops, rolls,
+          and inverted flight. This is a once in a lifetime opportunity for those seeking an unforgettable adventure.
+          <br><br>
+      Our aerobatic tours are perfect for thrill-seekers, aviation enthusiasts, and anyone looking for a unique
+          and exciting experience. Book now and get ready to take your flight to the next level!
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

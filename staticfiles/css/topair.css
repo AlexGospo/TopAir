@@ -1,0 +1,21 @@
+{% load static %}
+{%}
+
+body {
+    background-image: url('{% static 'path'%} ');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#content {
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+}
+h1, h3 {
+    color: white;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
