@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3+p9_gj6dw1x3+go(y)x5zsd+8^g46*$n%=ta58lgs1&m3h%^_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -141,4 +141,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 import django_heroku
-django_heroku.dettings(locals())
+django_heroku.settings(locals())
+
+if os.environ.get('DEBUG') == 'TRUE':
+    DEBUG=True
+elif os.environ.get('DEBUG') == 'FALSE':
+    DEBUG=False
