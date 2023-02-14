@@ -143,6 +143,7 @@ EMAIL_USE_TLS = True
 import django_heroku
 django_heroku.settings(locals())
 
+
 if os.environ.get('DEBUG') == 'TRUE':
     DEBUG=True
 elif os.environ.get('DEBUG') == 'FALSE':
