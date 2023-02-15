@@ -27,10 +27,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django3+p9_gj6dw1x3+go(y)x5zsd
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -121,9 +120,9 @@ USE_TZ = True
 
 
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "media"),
-]
+#STATICFILES_DIRS = [
+ #   os.path.join(BASE_DIR, "media"),
+#]
 
 
 # Default primary key field type
@@ -160,3 +159,5 @@ STATIC_URL = '/static/'
 # Simplified static file serving.
 # https://pypi.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
