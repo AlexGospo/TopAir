@@ -20,10 +20,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3+p9_gj6dw1x3+go(y)x5zsd+8^g46*$n%=ta58lgs1&m3h%^_'
+# SECRET_KEY = 'django-insecure-3+p9_gj6dw1x3+go(y)x5zsd+8^g46*$n%=ta58lgs1&m3h%^_'
+
+import os
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django3+p9_gj6dw1x3+go(y)x5zsd+8^g46*$n%=ta58lgs1&m3h%^_')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = []
 
@@ -43,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -114,11 +120,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "media"),
@@ -140,11 +141,22 @@ EMAIL_HOST_PASSWORD = 'ruknidobdepxjajv'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-import django_heroku
-django_heroku.settings(locals())
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
-if os.environ.get('DEBUG') == 'TRUE':
-    DEBUG=True
-elif os.environ.get('DEBUG') == 'FALSE':
-    DEBUG=False
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# The URL to use when referring to static files (where they will be served from)
+STATIC_URL = '/static/'
+
+
+# Simplified static file serving.
+# https://pypi.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
