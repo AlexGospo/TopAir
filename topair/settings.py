@@ -27,9 +27,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django3+p9_gj6dw1x3+go(y)x5zsd
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['top-air.up.railway.app']
 
 
 # Application definition
