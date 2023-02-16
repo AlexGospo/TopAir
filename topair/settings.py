@@ -27,8 +27,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django3+p9_gj6dw1x3+go(y)x5zsd
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+#DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+ALLOWED_HOSTS = [ 'top-air.up.railway.app', '127.0.0.1']
 
 
 # Application definition
@@ -160,3 +161,5 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+CSRF_TRUSTED_ORIGINS = ['https://top-air.up.railway.app/']
